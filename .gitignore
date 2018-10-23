@@ -98,6 +98,7 @@ fabric.properties
 # .idea/modules.xml
 # .idea/*.iml
 # .idea/modules
+.idea/
 
 # CMake
 
@@ -147,6 +148,7 @@ fabric.properties
 ### Gradle ###
 .gradle
 /build/
+gradle/
 
 # Ignore Gradle GUI config
 gradle-app.setting
@@ -162,5 +164,7 @@ gradle-app.setting
 
 ### Gradle Patch ###
 **/build/
+gradlew
+gradlew.bat
 
 # End of https://www.gitignore.io/api/linux,gradle,intellij,jetbrains
