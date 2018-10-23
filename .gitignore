@@ -167,4 +167,7 @@ gradle-app.setting
 gradlew
 gradlew.bat
 
+### Configurations ###
+src/main/resources/application.properties
+
 # End of https://www.gitignore.io/api/linux,gradle,intellij,jetbrains
