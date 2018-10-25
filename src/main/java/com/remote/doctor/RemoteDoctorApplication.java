@@ -1,4 +1,4 @@
-package com.remote.doctor.remote.doctor;
+package com.remote.doctor;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

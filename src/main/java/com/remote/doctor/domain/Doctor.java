@@ -1,4 +1,4 @@
-package com.remote.doctor.remote.doctor.domain;
+package com.remote.doctor.domain;
 
 import lombok.Data;
 

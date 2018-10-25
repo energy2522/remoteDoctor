@@ -1,6 +1,6 @@
-package com.remote.doctor.remote.doctor.repository;
+package com.remote.doctor.repository;
 
-import com.remote.doctor.remote.doctor.domain.Client;
+import com.remote.doctor.domain.Client;
 import org.springframework.data.repository.CrudRepository;
 
 public interface ClientRepository extends CrudRepository<Client, Integer> {
