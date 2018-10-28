@@ -169,5 +169,6 @@ gradlew.bat
 
 ### Configurations ###
 src/main/resources/application.properties
+src/main/java/com/remote/doctor/SecurityConfiguration.java
 
 # End of https://www.gitignore.io/api/linux,gradle,intellij,jetbrains
