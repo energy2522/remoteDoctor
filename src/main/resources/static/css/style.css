@@ -1,0 +1,47 @@
+
+
+.header {
+	font-family: 'Georgia Header' !important;
+	font-size: 8vh;
+	margin-top: 5vh;
+	color: #E0EEE0;
+	font-weight: bold;
+	text-shadow: -1px 0 	#4F4F4F, 0 1px 	#4F4F4F, 1px 0 	#4F4F4F, 0 -1px 	#4F4F4F;
+}
+
+.bg {
+	background: url('../img/wall4.jpg') no-repeat;
+	width: 100%;
+	height: 100vh;
+}
+
+.submit-btn {
+	font-size: 3vh;
+}
+
+.form-header {
+	font-family: 'Courier New';
+	font-weight: bold;
+	color: #607B8B;
+	padding: 30px;
+}
+
+.form-label {
+	font-family: 'Helvetica';
+	font-size: 2vh;
+	color: #8B7E66;
+}
+
+.form-field {
+	font-family: 'Arial';
+	font-size: 2.5vh;
+}
+
+.form-container {
+	padding: 0px 60px 40px 60px;
+	margin-top: 13vh;
+	border-radius: 20px;
+-webkit-box-shadow: 3px 4px 108px 24px rgba(41,56,42,1);
+-moz-box-shadow: 3px 4px 108px 24px rgba(41,56,42,1);
+box-shadow: 3px 4px 108px 24px rgba(41,56,42,1);
+}
