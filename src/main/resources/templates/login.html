@@ -18,15 +18,15 @@
         <div class="col-md-4 col-sm-4 col-xs-12">
             <p class="header text-center"><strong>Remote Doctor</strong></p>
             <!--form start-->
-            <form class="form-container">
+            <form th:action="@{/login}" method="post" class="form-container">
                 <h1 class="text-center form-header">Sign In</h1>
                 <div class="form-group">
                     <label class="form-label" for="username">Username</label>
-                    <input type="text" class="form-control form-field" id="username" placeholder="Username">
+                    <input type="text" class="form-control form-field" name="username" id="username" placeholder="Username">
                 </div>
                 <div class="form-group">
                     <label class="form-label" for="password">Password</label>
-                    <input type="password" class="form-control form-field" id="password" placeholder="Password">
+                    <input type="password" class="form-control form-field" name="password" id="password" placeholder="Password">
                 </div>
                 <div class="checkbox">
                     <label>
