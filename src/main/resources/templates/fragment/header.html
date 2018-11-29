@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" th:href="@{/css/header.css}">
+</head>
+<body>
+<div th:fragment="navbar">
+    <nav class="navbar navbar-inverse header">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><p class="brand text-center"><strong>Remote Doctor</strong></p></a>
+            <div sec:authorize="isAuthenticated()">
+                <div class="navbar-collapse collapse navbar-right">
+                    <ul class="nav navbar-nav">
+                        <a href="#" th:class="${activeTab == 'feed'} ? 'btn btn-info btn-size margin-top active'
+                        : 'btn btn-info btn-size margin-top'" role="button"><span>Feed</span></a>
+                        <a href="#" th:class="${activeTab == 'doctors'} ? 'btn btn-info btn-size margin-top active'
+                        : 'btn btn-info btn-size margin-top'" role="button"><span>Doctors</span></a>
+                        <a href="#" th:class="${activeTab == 'messages'} ? 'btn btn-info btn-size margin-top active'
+                        : 'btn btn-info btn-size margin-top'"><span>Messages</span></a>
+                        <a href="#" th:class="${activeTab == 'cabinet'} ? 'btn btn-info btn-size margin-top active'
+                        : 'btn btn-info btn-size margin-top'"><span>Cabinet</span></a>
+                        <a href="#" th:class="${activeTab == 'history'} ? 'btn btn-info btn-size margin-top active'
+                        : 'btn btn-info btn-size margin-top'"><span>History</span></a>
+                        <a href="#" th:class="${activeTab == 'about'} ? 'btn btn-info btn-size margin-top active'
+                        : 'btn btn-info btn-size margin-top'"><span>About</span></a>
+                    </ul>
+                </div>
+
+                <form class="navbar-form navbar-left" role="search">
+                    <div class="form-group">
+                        <input type="text" class="form-control margin-top" placeholder="Search">
+                    </div>
+                    <button type="submit" class="btn btn-primary margin-top">Search</button>
+                </form>
+            </div>
+
+            <ul class="nav nav-pills navbar-right" role="tablist" sec:authorize="isAnonymous()">
+                <a th:href="@{/login}" class="btn btn-info btn-lg btn3d">Log In</a>
+                <a href="#" class="btn btn-info btn-lg btn3d margin-right">Log Up</a>
+            </ul>
+        </div>
+
+    </nav>
+</div>
+
+<div layout:fragment="content"></div>
+</body>
+</html>

@@ -1,0 +1,54 @@
+body {
+    overflow-y: hidden;
+}
+
+.header {
+    background-color: #B2DFEE !important;
+}
+
+.container-fluid {
+    padding-top: 2vh !important;
+    padding-bottom: 2vh !important;
+    border: none !important;
+}
+
+.navbar-inverse {
+    margin-bottom: 0px !important;
+    border-bottom: 5vh !important;
+    margin-bottom: 0.45vh !important;
+    border-bottom-color: white !important;
+    border-top: none !important;
+    border-left: none !important;
+    border-right: none !important;
+}
+
+.brand {
+    font-family: 'Georgia Header' !important;
+    font-size: 5.5vh !important;
+    margin-top: 0.1vh !important;
+    color: #CDCDB4 !important;
+    font-weight: bold !important;
+    text-shadow: -1px 0 #4F4F4F, 0 1px #4F4F4F, 1px 0 #4F4F4F, 0 -1px !important;
+}
+
+.active a {
+    border-radius: 20px;
+    background-color: #36648B;
+}
+
+.margin-top {
+    margin-top: 1vh;
+}
+
+.margin-right {
+    margin-right: 2vh;
+}
+
+.btn-size {
+    width: 6.5vw !important;
+    height: 5.5vh !important;
+    font-family: 'Georgia' !important;
+    font-size: 2.5vh !important;
+}
+
+
