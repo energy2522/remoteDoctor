@@ -15,32 +15,33 @@
             <div sec:authorize="isAuthenticated()">
                 <div class="navbar-collapse collapse navbar-right">
                     <ul class="nav navbar-nav">
-                        <a href="#" th:class="${activeTab == 'feed'} ? 'btn btn-info btn-size margin-top active'
-                        : 'btn btn-info btn-size margin-top'" role="button"><span>Feed</span></a>
-                        <a href="#" th:class="${activeTab == 'doctors'} ? 'btn btn-info btn-size margin-top active'
-                        : 'btn btn-info btn-size margin-top'" role="button"><span>Doctors</span></a>
-                        <a href="#" th:class="${activeTab == 'messages'} ? 'btn btn-info btn-size margin-top active'
-                        : 'btn btn-info btn-size margin-top'"><span>Messages</span></a>
-                        <a href="#" th:class="${activeTab == 'cabinet'} ? 'btn btn-info btn-size margin-top active'
-                        : 'btn btn-info btn-size margin-top'"><span>Cabinet</span></a>
-                        <a href="#" th:class="${activeTab == 'history'} ? 'btn btn-info btn-size margin-top active'
-                        : 'btn btn-info btn-size margin-top'"><span>History</span></a>
-                        <a href="#" th:class="${activeTab == 'about'} ? 'btn btn-info btn-size margin-top active'
-                        : 'btn btn-info btn-size margin-top'"><span>About</span></a>
+                        <a href="#" th:class="${activeTab == 'feed'} ? 'btn btn-info btn-lg btn3d margin-top active'
+                        : 'btn btn-info btn-lg btn3d margin-top'" role="button"><span th:utext="#{feed}"></span></a>
+                        <a href="#" th:class="${activeTab == 'doctors'} ? 'btn btn-info btn-lg btn3d margin-top active'
+                        : 'btn btn-info btn-lg btn3d margin-top'" role="button"><span th:utext="#{doctors}"></span></a>
+                        <a href="#" th:class="${activeTab == 'messages'} ? 'btn btn-info btn-lg btn3d margin-top active'
+                        : 'btn btn-info btn-lg btn3d margin-top'"><span th:utext="#{messages}"></span></a>
+                        <a href="#" th:class="${activeTab == 'cabinet'} ? 'btn btn-info btn-lg btn3d margin-top active'
+                        : 'btn btn-info btn-lg btn3d margin-top'"><span th:utext="#{cabinet}"></span></a>
+                        <a href="#" th:class="${activeTab == 'history'} ? 'btn btn-info btn-lg btn3d margin-top active'
+                        : 'btn btn-info btn-lg btn3d margin-top'"><span th:utext="#{history}"></span></a>
+                        <a href="#" th:class="${activeTab == 'about'} ? 'btn btn-info btn-lg btn3d margin-top active'
+                        : 'btn btn-info btn-lg btn3d margin-top'"><span th:utext="#{about}"></span></a>
+                        <a th:href="@{/logout}" th:class="'btn btn-warning btn-lg btn3d margin-top'"><span th:utext="#{log.out}"></span></a>
                     </ul>
                 </div>
 
                 <form class="navbar-form navbar-left" role="search">
                     <div class="form-group">
-                        <input type="text" class="form-control margin-top" placeholder="Search">
+                        <input type="text" class="form-control margin-top" th:placeholder="#{search}">
                     </div>
-                    <button type="submit" class="btn btn-primary margin-top">Search</button>
+                    <button type="submit" class="btn btn-primary margin-top" th:utext="#{search}"></button>
                 </form>
             </div>
 
             <ul class="nav nav-pills navbar-right" role="tablist" sec:authorize="isAnonymous()">
-                <a th:href="@{/login}" class="btn btn-info btn-lg btn3d">Log In</a>
-                <a href="#" class="btn btn-info btn-lg btn3d margin-right">Log Up</a>
+                <a th:href="@{/login}" class="btn btn-info btn-lg btn3d" th:utext="#{log.in}">Log In</a>
+                <a href="#" class="btn btn-info btn-lg btn3d  margin-right" th:utext="#{log.up}">Log Up</a>
             </ul>
         </div>
 

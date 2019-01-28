@@ -30,4 +30,9 @@ public class LoginController {
     public String successDoctor() {
         return "main_doctor";
     }
+
+    @RequestMapping("/logout-success")
+    public String logout() {
+        return "main";
+    }
 }

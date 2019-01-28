@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.springframework.org/schema/data/jaxb">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Remote Doctor</title>
     <meta charset="utf-8">
@@ -19,21 +19,21 @@
             <p class="header text-center"><strong>Remote Doctor</strong></p>
             <!--form start-->
             <form th:action="@{/login}" method="post" class="form-container">
-                <h1 class="text-center form-header">Sign In</h1>
+                <h1 class="text-center form-header" th:utext="#{sign.in}"></h1>
                 <div class="form-group">
-                    <label class="form-label" for="username">Username</label>
-                    <input type="text" class="form-control form-field" name="username" id="username" placeholder="Username">
+                    <label class="form-label" for="username" th:utext="#{username}"></label>
+                    <input type="text" class="form-control form-field" name="username" id="username" th:placeholder="#{username}">
                 </div>
                 <div class="form-group">
-                    <label class="form-label" for="password">Password</label>
-                    <input type="password" class="form-control form-field" name="password" id="password" placeholder="Password">
+                    <label class="form-label" for="password" th:utext="#{password}"></label>
+                    <input type="password" class="form-control form-field" name="password" id="password" th:placeholder="#{password}">
                 </div>
                 <div class="checkbox">
                     <label>
                         <input type="checkbox"> Remember me
                     </label>
                 </div>
-                <button type="submit" class="btn btn-primary btn-block submit-btn">Sign In</button>
+                <button type="submit" class="btn btn-primary btn-block submit-btn" th:utext="#{sign.in}"></button>
             </form>
             <!--form end-->
         </div>
