@@ -7,9 +7,17 @@ body {
 }
 
 .container-fluid {
-    padding-top: 2vh !important;
-    padding-bottom: 2vh !important;
     border: none !important;
+}
+
+.menu-padding {
+    padding-top: 2vh;
+    padding-bottom: 0vh;
+}
+
+.lang-padding {
+    padding-top: 0vh;
+    padding-bottom: 1vh;
 }
 
 .navbar-inverse {
@@ -36,6 +44,12 @@ body {
     background-color: #36648B;
 }
 
+.active-lang{
+    -webkit-box-shadow: inset -1px 0px 24px 25px rgba(255,255,255,0.66);
+    -moz-box-shadow: inset -1px 0px 24px 25px rgba(255,255,255,0.66);
+    box-shadow: inset -1px 0px 24px 25px rgba(255,255,255,0.66);
+}
+
 .margin-top {
     margin-top: 1vh;
 }
@@ -50,5 +64,12 @@ body {
     font-family: 'Georgia' !important;
     font-size: 2.5vh !important;
 }
+
+.lang {
+    width: 6vh;
+    height: 4vh;
+}
+
+
 
 
