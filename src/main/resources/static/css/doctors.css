@@ -1,0 +1,41 @@
+.breadcrumb {
+    padding-bottom: 1px !important;
+    height: 5.5vh;
+    background-color: #FFE4C4;
+}
+
+.empty-area {
+    height: 12vh;
+}
+
+.img-thumbnail {
+    width: 570px !important;
+    height: 330px !important;
+}
+
+.search {
+    padding-top: 3vh;
+    margin-bottom: 8vh;
+}
+
+.search-size {
+    font-size: 2vh;
+}
+
+.search-input {
+    width: 35vh !important;
+}
+
+.icon-small
+{
+    height:20px !important;
+    width: 20px !important;
+    margin:0;
+    padding:0;
+}
+
+.in-line {
+    display: inline;
+}
+
+

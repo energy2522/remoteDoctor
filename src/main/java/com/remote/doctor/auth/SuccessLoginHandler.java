@@ -16,7 +16,7 @@ import java.util.Collection;
 
 public class SuccessLoginHandler implements AuthenticationSuccessHandler {
     private static final String ADMIN_REDIRECT = "/admin/main";
-    private static final String CLIENT_REDIRECT = "/client/main";
+    private static final String CLIENT_REDIRECT = "/client/feed";
     private static final String DOCTOR_REDIRECT = "/doctor/main";
 
     private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="fragment/header" th:with="activeTab='doctors'" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="/js/doctors.js"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/common.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/doctors.css}">
+</head>
+<body class="y-allow">
+<div th:replace=":: navbar">Navbar</div>
+
+<div layout:fragment="content">
+    <div class="content">
+        <div class="row search">
+            <div class="col-md-4 col-md-offset-5">
+                <form class="navbar-form navbar-left" role="search">
+                    <div class="form-group">
+                        <input id="regex" type="text" class="form-control search-size search-input"
+                               th:placeholder="#{enter.doctor}">
+                    </div>
+                    <button id="search" type="button" class="btn btn-primary search-size" th:utext="#{search}">Search</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-10 col-md-offset-2">
+                <div class="row">
+                    <div id="family_physician" class="col-sm-5">
+                        <div class="thumbnail">
+                            <a href="#">
+                                <img th:src="@{/img/doctors/familyPhysician.jpg}" class="img-thumbnail">
+                                <span th:utext="#{family.physician}">Family Physician</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div id="dentist" class="col-sm-5">
+                        <div class="thumbnail">
+                            <a href="#">
+                                <img th:src="@{/img/doctors/dentist.jpg}" class="img-thumbnail">
+                                <span th:utext="#{dentist}">Dentist</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div id="pediatrician" class="col-sm-5">
+                        <div class="thumbnail">
+                            <a href="#">
+                                <img th:src="@{/img/doctors/pediatrician.jpg}" class="img-thumbnail">
+                                <span th:utext="#{pediatrician}">Pediatrician</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div id="gynecologist" class="col-sm-5">
+                        <div class="thumbnail">
+                            <a href="#">
+                                <img th:src="@{/img/doctors/gynecologist.jpg}" class="img-thumbnail">
+                                <span th:utext="#{gynecologist}">Gynecologist</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div id="surgeon" class="col-sm-5">
+                        <div class="thumbnail">
+                            <a href="#">
+                                <img th:src="@{/img/doctors/surgeon.jpg}" class="img-thumbnail">
+                                <span th:utext="#{surgeon}">Surgeon</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div id="psychiatrist" class="col-sm-5">
+                        <div class="thumbnail">
+                            <img th:src="@{/img/doctors/psychiatrist.jpg}" class="img-thumbnail">
+                            <span th:utext="#{psychiatrist}">Psychiatrist</span>
+                        </div>
+                    </div>
+                    <div id="cardiologist" class="col-sm-5">
+                        <div class="thumbnail">
+                            <a href="#">
+                                <img th:src="@{/img/doctors/cardiologist.jpg}" class="img-thumbnail">
+                                <span th:utext="#{cardiologist}">Cardiologist</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div id="dermatologist" class="col-sm-5">
+                        <div class="thumbnail">
+                            <a href="#">
+                                <img th:src="@{/img/doctors/dermatologist.jpg}" class="img-thumbnail">
+                                <span th:utext="#{dermatologist}">Dermatologist</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div id="endocrinologist" class="col-sm-5">
+                        <div class="thumbnail">
+                            <a href="#">
+                                <img th:src="@{/img/doctors/endocrinologist.jpg}" class="img-thumbnail">
+                                <span th:utext="#{endocrinologist}">Endocrinologist</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div id="gastroenterologist" class="col-sm-5">
+                        <div class="thumbnail">
+                            <img th:src="@{/img/doctors/gastroenterologist.jpg}" class="img-thumbnail">
+                            <span th:utext="#{gastroenterologist}">Gastroenterologist</span>
+                        </div>
+                    </div>
+                    <div id="infectious_disease_physician" class="col-sm-5">
+                        <div class="thumbnail">
+                            <a href="#">
+                                <img th:src="@{/img/doctors/infectiousDiseasePhysician.jpg}" class="img-thumbnail">
+                                <span th:utext="#{infectious.disease.physician}">Infectious Disease Physician</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div id="nephrologist" class="col-sm-5">
+                        <div class="thumbnail">
+                            <a href="#">
+                                <img th:src="@{/img/doctors/nephrologist.jpg}" class="img-thumbnail">
+                                <span th:utext="#{nephrologist}">Nephrologist</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div id="ophthalmologist" class="col-sm-5">
+                        <div class="thumbnail">
+                            <a href="#">
+                                <img th:src="@{/img/doctors/ophthalmologist.jpg}" class="img-thumbnail">
+                                <span th:utext="#{ophthalmologist}">Ophthalmologist</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div id="otolaryngologist" class="col-sm-5">
+                        <div class="thumbnail">
+                            <a href="#">
+                                <img th:src="@{/img/doctors/otolaryngologist.jpg}" class="img-thumbnail">
+                                <span th:utext="#{otolaryngologist}">Otolaryngologist</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div id="pulmonologist" class="col-sm-5">
+                        <div class="thumbnail">
+                            <a href="#">
+                                <img th:src="@{/img/doctors/pulmonologist.jpg}" class="img-thumbnail">
+                                <span th:utext="#{pulmonologist}">Pulmonologist</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div id="neurologist" class="col-sm-5">
+                        <div class="thumbnail">
+                            <a href="#">
+                                <img th:src="@{/img/doctors/neurologist.jpg}" class="img-thumbnail">
+                                <span th:utext="#{neurologist}">Neurologist</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div id="physician_executive" class="col-sm-5">
+                        <div class="thumbnail">
+                            <a href="#">
+                                <img th:src="@{/img/doctors/physicianTherapist.jpg}" class="img-thumbnail">
+                                <span th:utext="#{physician.therapist}">Physician Executive</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div id="radiologist" class="col-sm-5">
+                        <div class="thumbnail">
+                            <a href="#">
+                                <img th:src="@{/img/doctors/radiologist.jpg}" class="img-thumbnail">
+                                <span th:utext="#{radiologist}">Radiologist</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div id="oncologist" class="col-sm-5">
+                        <div class="thumbnail">
+                            <a href="#">
+                                <img th:src="@{/img/doctors/oncologist.jpg}" class="img-thumbnail">
+                                <span th:utext="#{oncologist}">Oncologist</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div id="other" class="col-sm-5">
+                        <div class="thumbnail">
+                            <a href="#">
+                                <img th:src="@{/img/doctors/other.jpg}" class="img-thumbnail">
+                                <span th:utext="#{other}">Other</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>

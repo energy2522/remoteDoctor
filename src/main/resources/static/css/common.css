@@ -1,0 +1,21 @@
+.content {
+    background-color: #B2DFEE;
+    width: 100%;
+
+    font-family: 'Courier New';
+    font-weight: bold;
+    color: #607B8B;
+    font-size: 3vh;
+}
+
+.y-hidden {
+    overflow-y: hidden;
+}
+
+.x-hidden {
+    overflow-x: hidden;
+}
+
+.y-allow {
+    overflow-y: scroll;
+}

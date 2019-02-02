@@ -8,7 +8,7 @@ public class LoginController {
 
     @RequestMapping("/")
     public String main() {
-        return "main";
+        return "feed";
     }
 
     @RequestMapping("/login")
@@ -21,9 +21,14 @@ public class LoginController {
         return "main_admin";
     }
 
-    @RequestMapping("/client/main")
+    @RequestMapping("/client/feed")
     public String successClient() {
-        return "main";
+        return "feed";
+    }
+
+    @RequestMapping("/client/doctors")
+    public String getDoctors() {
+        return "doctors";
     }
 
     @RequestMapping("/doctor/main")
@@ -33,6 +38,6 @@ public class LoginController {
 
     @RequestMapping("/logout-success")
     public String logout() {
-        return "main";
+        return "feed";
     }
 }

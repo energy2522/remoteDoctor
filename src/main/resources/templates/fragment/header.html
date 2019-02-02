@@ -16,9 +16,9 @@
             <div sec:authorize="isAuthenticated()">
                 <div class="navbar-collapse collapse navbar-right">
                     <ul class="nav navbar-nav">
-                        <a href="#" th:class="${activeTab == 'feed'} ? 'btn btn-info btn-lg btn3d margin-top active'
+                        <a th:href="@{/client/feed}" th:class="${activeTab == 'feed'} ? 'btn btn-info btn-lg btn3d margin-top active'
                         : 'btn btn-info btn-lg btn3d margin-top'" role="button"><span th:utext="#{feed}"></span></a>
-                        <a href="#" th:class="${activeTab == 'doctors'} ? 'btn btn-info btn-lg btn3d margin-top active'
+                        <a th:href="@{/client/doctors}" th:class="${activeTab == 'doctors'} ? 'btn btn-info btn-lg btn3d margin-top active'
                         : 'btn btn-info btn-lg btn3d margin-top'" role="button"><span th:utext="#{doctors}"></span></a>
                         <a href="#" th:class="${activeTab == 'messages'} ? 'btn btn-info btn-lg btn3d margin-top active'
                         : 'btn btn-info btn-lg btn3d margin-top'"><span th:utext="#{messages}"></span></a>
@@ -32,12 +32,12 @@
                     </ul>
                 </div>
 
-                <form class="navbar-form navbar-left" role="search">
-                    <div class="form-group">
-                        <input type="text" class="form-control margin-top" th:placeholder="#{search}">
-                    </div>
-                    <button type="submit" class="btn btn-primary margin-top" th:utext="#{search}"></button>
-                </form>
+                <!--<form class="navbar-form navbar-left" role="search">-->
+                    <!--<div class="form-group">-->
+                        <!--<input type="text" class="form-control margin-top" th:placeholder="#{search}">-->
+                    <!--</div>-->
+                    <!--<button type="submit" class="btn btn-primary margin-top" th:utext="#{search}"></button>-->
+                <!--</form>-->
             </div>
 
             <ul class="nav nav-pills navbar-right" role="tablist" sec:authorize="isAnonymous()">
