@@ -1,5 +1,3 @@
-
-
 .header {
 	font-family: 'Georgia Header' !important;
 	font-size: 8vh;
@@ -26,22 +24,56 @@
 	padding: 30px;
 }
 
-.form-label {
-	font-family: 'Helvetica';
-	font-size: 2vh;
-	color: #8B7E66;
-}
 
 .form-field {
-	font-family: 'Arial';
-	font-size: 2.5vh;
+	font-family: 'Georgia';
+	font-size: 3vh;
+	height: 5vh;
 }
 
 .form-container {
+	font-weight: lighter;
+	height: 50vh;
 	padding: 0px 60px 40px 60px;
 	margin-top: 13vh;
 	border-radius: 20px;
--webkit-box-shadow: 3px 4px 108px 24px rgba(41,56,42,1);
--moz-box-shadow: 3px 4px 108px 24px rgba(41,56,42,1);
-box-shadow: 3px 4px 108px 24px rgba(41,56,42,1);
+	-webkit-box-shadow: 3px 4px 108px 24px rgba(41,56,42,1);
+	-moz-box-shadow: 3px 4px 108px 24px rgba(41,56,42,1);
+	box-shadow: 3px 4px 108px 24px rgba(41,56,42,1);
+}
+
+.btnLogin{
+	float: right;
+	margin-top: 10%;
+	border: none;
+	border-radius: 1.5rem;
+	padding: 2%;
+	background: #0062cc;
+	color: #fff;
+	font-weight: 600;
+	width: 50%;
+	cursor: pointer;
+}
+
+.btnLogin:hover {
+	background: #bcbfbf;
+	color: #0062cc;
+}
+
+.btnRegister{
+	float: right;
+	margin-top: 10%;
+	border: none;
+	border-radius: 1.5rem;
+	padding: 2%;
+	background: #bcbfbf;
+	color: #0062cc;
+	font-weight: 600;
+	width: 50%;
+	cursor: pointer;
+}
+
+.btnRegister:hover {
+	background: #0062cc;
+	color: #fff;
 }

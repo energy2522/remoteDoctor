@@ -1,0 +1,120 @@
+body {
+    background: url('../img/wall4.jpg') no-repeat;
+    width: 100%;
+    height: 100vh;
+}
+
+.register-left{
+    text-align: center;
+    color: #fff;
+    margin-top: 4%;
+    border-radius: 5%;
+}
+.register-left input{
+    border: none;
+    border-radius: 1.5rem;
+    padding: 2%;
+    width: 60%;
+    background: #f8f9fa;
+    font-weight: bold;
+    color: #383d41;
+    margin-top: 30%;
+    margin-bottom: 3%;
+    cursor: pointer;
+}
+.register-right{
+    background: #f8f9fa;
+    border-bottom-right-radius: 5%;
+    border-top-right-radius: 5%;
+}
+.register-left img{
+    margin-top: 15%;
+    width: 25%;
+}
+.register-left p{
+    font-weight: lighter;
+    padding: 12%;
+    margin-top: -9%;
+}
+.register .register-form{
+    padding: 10%;
+    margin-top: 10%;
+    border-radius: 5%;
+}
+.btnRegister{
+    float: right;
+    margin-top: 10%;
+    border: none;
+    border-radius: 1.5rem;
+    padding: 2%;
+    background: #0062cc;
+    color: #fff;
+    font-weight: 600;
+    width: 50%;
+    cursor: pointer;
+}
+
+.btnRegister:hover {
+    background: #bcbfbf;
+    color: #0062cc;
+}
+
+.btnLogin{
+    float: right;
+    margin-top: 10%;
+    border: none;
+    border-radius: 1.5rem;
+    padding: 2%;
+    background: #bcbfbf;
+    color: #0062cc;
+    font-weight: 600;
+    width: 50%;
+    cursor: pointer;
+}
+
+.register .nav-tabs{
+    margin-top: 3%;
+    border: none;
+    background: #0062cc;
+    border-radius: 1.5rem;
+    width: 28%;
+    float: right;
+}
+.register .nav-tabs .nav-link{
+    padding: 2%;
+    height: 34px;
+    font-weight: 600;
+    color: #fff;
+    border-top-right-radius: 1.5rem;
+    border-bottom-right-radius: 1.5rem;
+}
+.register .nav-tabs .nav-link:hover{
+    border: none;
+}
+.register .nav-tabs .nav-link.active{
+    width: 100px;
+    color: #0062cc;
+    border: 2px solid #0062cc;
+    border-top-left-radius: 1.5rem;
+    border-bottom-left-radius: 1.5rem;
+}
+.register-heading{
+    text-align: center;
+    margin-top: 8%;
+    margin-bottom: -15%;
+    color: #495057;
+    border-radius: 5%;
+}
+
+#blah1 {
+    width: 150px;
+    height: 180px;
+}
+
+.form-container {
+    margin-top: 13vh;
+    border-radius: 20px;
+    -webkit-box-shadow: 3px 4px 108px 24px rgba(41,56,42,1);
+    -moz-box-shadow: 3px 4px 108px 24px rgba(41,56,42,1);
+    box-shadow: 3px 4px 108px 24px rgba(41,56,42,1);
+}

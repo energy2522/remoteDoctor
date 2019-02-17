@@ -12,12 +12,12 @@ import org.springframework.stereotype.Service;
 import java.util.Objects;
 
 @Service
-public class DoctorUserDetailsService implements UserDetailsService{
+public class CustomUserDetailsService implements UserDetailsService{
     private final ClientRepository clientRepository;
     private final AdminRepository adminRepository;
     private final DoctorRepository doctorRepository;
 
-    public DoctorUserDetailsService(ClientRepository clientRepository, AdminRepository adminRepository, DoctorRepository doctorRepository) {
+    public CustomUserDetailsService(ClientRepository clientRepository, AdminRepository adminRepository, DoctorRepository doctorRepository) {
         this.clientRepository = clientRepository;
         this.adminRepository = adminRepository;
         this.doctorRepository = doctorRepository;
@@ -31,7 +31,7 @@ public class DoctorUserDetailsService implements UserDetailsService{
             throw new UsernameNotFoundException(String.format("User with username: %s isn't found", username));
         }
 
-        return new DoctorUserDetails(user);
+        return new CustomUserDetails(user);
     }
 
     private User loadUser(String username) {

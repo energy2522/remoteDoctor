@@ -1,6 +1,6 @@
 package com.remote.doctor.auth;
 
-import com.remote.doctor.constant.Role;
+import com.remote.doctor.constant.Roles;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.web.DefaultRedirectStrategy;
@@ -48,11 +48,11 @@ public class SuccessLoginHandler implements AuthenticationSuccessHandler {
         for (GrantedAuthority authority : authorities) {
             String role = authority.getAuthority();
 
-            if (role.equalsIgnoreCase(Role.ADMIN.getVal())) {
+            if (role.equalsIgnoreCase(Roles.ADMIN.getVal())) {
                 redirectUrl = ADMIN_REDIRECT;
-            } else if (role.equalsIgnoreCase(Role.CLIENT.getVal())) {
+            } else if (role.equalsIgnoreCase(Roles.CLIENT.getVal())) {
                 redirectUrl = CLIENT_REDIRECT;
-            } else if (role.equalsIgnoreCase(Role.DOCTOR.getVal())) {
+            } else if (role.equalsIgnoreCase(Roles.DOCTOR.getVal())) {
                 redirectUrl = DOCTOR_REDIRECT;
             } else {
                 throw new IllegalArgumentException();

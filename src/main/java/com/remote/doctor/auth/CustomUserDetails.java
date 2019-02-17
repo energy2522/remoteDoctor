@@ -11,10 +11,10 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
-public class DoctorUserDetails implements UserDetails {
+public class CustomUserDetails implements UserDetails {
     private User user;
 
-    public DoctorUserDetails(User user) {
+    public CustomUserDetails(User user) {
         super();
         this.user = user;
     }

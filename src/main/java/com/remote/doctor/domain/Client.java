@@ -17,4 +17,11 @@ public class Client extends User{
 
     @Column(name = "amount")
     private double amount;
+
+    @Column(name="phone_number")
+    private String phoneNumber;
+
+    @Column(name = "avatar")
+    private byte[] avatar;
+
 }
