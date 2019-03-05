@@ -37,7 +37,7 @@
                 <div class="row">
                     <div id="family_physician" class="col-sm-5">
                         <div class="thumbnail">
-                            <a href="#">
+                            <a th:href="@{/client/doctors/type/family.physician}">
                                 <img th:src="@{/img/doctors/familyPhysician.jpg}" class="img-thumbnail">
                                 <span th:utext="#{family.physician}">Family Physician</span>
                             </a>
@@ -45,16 +45,16 @@
                     </div>
                     <div id="dentist" class="col-sm-5">
                         <div class="thumbnail">
-                            <a href="#">
+                            <a th:href="@{/client/doctors/type/dentist}">
                                 <img th:src="@{/img/doctors/dentist.jpg}" class="img-thumbnail">
-                                <span th:utext="#{dentist}">Dentist</span>
+                            <span th:utext="#{dentist}">Dentist</span>
                             </a>
                         </div>
                     </div>
 
                     <div id="pediatrician" class="col-sm-5">
                         <div class="thumbnail">
-                            <a href="#">
+                            <a th:href="@{/client/doctors/type/pediatrician}">
                                 <img th:src="@{/img/doctors/pediatrician.jpg}" class="img-thumbnail">
                                 <span th:utext="#{pediatrician}">Pediatrician</span>
                             </a>
@@ -63,7 +63,7 @@
 
                     <div id="gynecologist" class="col-sm-5">
                         <div class="thumbnail">
-                            <a href="#">
+                            <a th:href="@{/client/doctors/type/gynecologist}">
                                 <img th:src="@{/img/doctors/gynecologist.jpg}" class="img-thumbnail">
                                 <span th:utext="#{gynecologist}">Gynecologist</span>
                             </a>
@@ -71,7 +71,7 @@
                     </div>
                     <div id="surgeon" class="col-sm-5">
                         <div class="thumbnail">
-                            <a href="#">
+                            <a th:href="@{/client/doctors/type/surgeon}">
                                 <img th:src="@{/img/doctors/surgeon.jpg}" class="img-thumbnail">
                                 <span th:utext="#{surgeon}">Surgeon</span>
                             </a>
@@ -79,13 +79,15 @@
                     </div>
                     <div id="psychiatrist" class="col-sm-5">
                         <div class="thumbnail">
-                            <img th:src="@{/img/doctors/psychiatrist.jpg}" class="img-thumbnail">
-                            <span th:utext="#{psychiatrist}">Psychiatrist</span>
+                            <a th:href="@{/client/doctors/type/psychiatrist}">
+                                <img th:src="@{/img/doctors/psychiatrist.jpg}" class="img-thumbnail">
+                                <span th:utext="#{psychiatrist}">Psychiatrist</span>
+                            </a>
                         </div>
                     </div>
                     <div id="cardiologist" class="col-sm-5">
                         <div class="thumbnail">
-                            <a href="#">
+                            <a th:href="@{/client/doctors/type/cardiologist}">
                                 <img th:src="@{/img/doctors/cardiologist.jpg}" class="img-thumbnail">
                                 <span th:utext="#{cardiologist}">Cardiologist</span>
                             </a>
@@ -93,7 +95,7 @@
                     </div>
                     <div id="dermatologist" class="col-sm-5">
                         <div class="thumbnail">
-                            <a href="#">
+                            <a th:href="@{/client/doctors/type/dermatologist}">
                                 <img th:src="@{/img/doctors/dermatologist.jpg}" class="img-thumbnail">
                                 <span th:utext="#{dermatologist}">Dermatologist</span>
                             </a>
@@ -101,7 +103,7 @@
                     </div>
                     <div id="endocrinologist" class="col-sm-5">
                         <div class="thumbnail">
-                            <a href="#">
+                            <a th:href="@{/client/doctors/type/endocrinologist}">
                                 <img th:src="@{/img/doctors/endocrinologist.jpg}" class="img-thumbnail">
                                 <span th:utext="#{endocrinologist}">Endocrinologist</span>
                             </a>
@@ -109,13 +111,15 @@
                     </div>
                     <div id="gastroenterologist" class="col-sm-5">
                         <div class="thumbnail">
+                            <a th:href="@{/client/doctors/type/gastroenterologist}">
                             <img th:src="@{/img/doctors/gastroenterologist.jpg}" class="img-thumbnail">
                             <span th:utext="#{gastroenterologist}">Gastroenterologist</span>
+                            </a>
                         </div>
                     </div>
                     <div id="infectious_disease_physician" class="col-sm-5">
                         <div class="thumbnail">
-                            <a href="#">
+                            <a th:href="@{/client/doctors/type/infectious.disease.physician}">
                                 <img th:src="@{/img/doctors/infectiousDiseasePhysician.jpg}" class="img-thumbnail">
                                 <span th:utext="#{infectious.disease.physician}">Infectious Disease Physician</span>
                             </a>
@@ -123,7 +127,7 @@
                     </div>
                     <div id="nephrologist" class="col-sm-5">
                         <div class="thumbnail">
-                            <a href="#">
+                            <a th:href="@{/client/doctors/type/nephrologist}">
                                 <img th:src="@{/img/doctors/nephrologist.jpg}" class="img-thumbnail">
                                 <span th:utext="#{nephrologist}">Nephrologist</span>
                             </a>
@@ -131,7 +135,7 @@
                     </div>
                     <div id="ophthalmologist" class="col-sm-5">
                         <div class="thumbnail">
-                            <a href="#">
+                            <a th:href="@{/client/doctors/type/ophthalmologist}">
                                 <img th:src="@{/img/doctors/ophthalmologist.jpg}" class="img-thumbnail">
                                 <span th:utext="#{ophthalmologist}">Ophthalmologist</span>
                             </a>
@@ -139,7 +143,7 @@
                     </div>
                     <div id="otolaryngologist" class="col-sm-5">
                         <div class="thumbnail">
-                            <a href="#">
+                            <a th:href="@{/client/doctors/type/otolaryngologist}">
                                 <img th:src="@{/img/doctors/otolaryngologist.jpg}" class="img-thumbnail">
                                 <span th:utext="#{otolaryngologist}">Otolaryngologist</span>
                             </a>
@@ -147,7 +151,7 @@
                     </div>
                     <div id="pulmonologist" class="col-sm-5">
                         <div class="thumbnail">
-                            <a href="#">
+                            <a th:href="@{/client/doctors/type/pulmonologist}">
                                 <img th:src="@{/img/doctors/pulmonologist.jpg}" class="img-thumbnail">
                                 <span th:utext="#{pulmonologist}">Pulmonologist</span>
                             </a>
@@ -155,7 +159,7 @@
                     </div>
                     <div id="neurologist" class="col-sm-5">
                         <div class="thumbnail">
-                            <a href="#">
+                            <a th:href="@{/client/doctors/type/neurologist}">
                                 <img th:src="@{/img/doctors/neurologist.jpg}" class="img-thumbnail">
                                 <span th:utext="#{neurologist}">Neurologist</span>
                             </a>
@@ -163,7 +167,7 @@
                     </div>
                     <div id="physician_executive" class="col-sm-5">
                         <div class="thumbnail">
-                            <a href="#">
+                            <a th:href="@{/client/doctors/type/physician.therapist}">
                                 <img th:src="@{/img/doctors/physicianTherapist.jpg}" class="img-thumbnail">
                                 <span th:utext="#{physician.therapist}">Physician Executive</span>
                             </a>
@@ -171,7 +175,7 @@
                     </div>
                     <div id="radiologist" class="col-sm-5">
                         <div class="thumbnail">
-                            <a href="#">
+                            <a th:href="@{/client/doctors/type/radiologist}">
                                 <img th:src="@{/img/doctors/radiologist.jpg}" class="img-thumbnail">
                                 <span th:utext="#{radiologist}">Radiologist</span>
                             </a>
@@ -179,7 +183,7 @@
                     </div>
                     <div id="oncologist" class="col-sm-5">
                         <div class="thumbnail">
-                            <a href="#">
+                            <a th:href="@{/client/doctors/type/oncologist}">
                                 <img th:src="@{/img/doctors/oncologist.jpg}" class="img-thumbnail">
                                 <span th:utext="#{oncologist}">Oncologist</span>
                             </a>
@@ -187,7 +191,7 @@
                     </div>
                     <div id="other" class="col-sm-5">
                         <div class="thumbnail">
-                            <a href="#">
+                            <a th:href="@{/client/doctors/type/other}">
                                 <img th:src="@{/img/doctors/other.jpg}" class="img-thumbnail">
                                 <span th:utext="#{other}">Other</span>
                             </a>

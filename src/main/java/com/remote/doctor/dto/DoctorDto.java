@@ -25,4 +25,8 @@ public class DoctorDto {
     private String phoneNumber;
 
     private MultipartFile avatar;
+
+    private String encodeAvatar;
+
+    private long rate;
 }

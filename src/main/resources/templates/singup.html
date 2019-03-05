@@ -13,7 +13,7 @@
 <div class="container register form-container">
     <div class="row">
         <div class="col-md-3 register-left">
-            <input type='file' id="window" name="avatar" onchange="readURL(this);" hidden/>
+            <input type='file' id="window" name="avatar" onclick="readURL(this);" onchange="readURL(this);" th:value="@{/img/unknown-person.jpg}" hidden/>
             <img id="blah1" th:src="@{/img/unknown-person.jpg}" onclick="clickWindow()" alt="your image"/>
             <p th:utext="#{your.avatar}">Your avatar</p>
 
@@ -67,7 +67,12 @@
                                 <input type="text" class="form-control" name="city" th:placeholder="#{city(' *')}" value=""/>
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control" name="type" th:placeholder="#{your.type(' *')}" value=""/>
+                                <!--<input type="text" class="form-control" name="type" th:placeholder="#{your.type(' *')}" value=""/>-->
+                                <select id="type" name="type" class="form-control" onchange="removeDefault()">
+                                    <option id="type_default" th:text="#{your.type(' *')}" selected></option>
+                                    <option th:each="type : ${types}" th:value="${type.name}" th:text="${#messages.msg(type.name)}">
+                                    </option>
+                                </select>
                             </div>
 
                             <input type="submit" class="btn btn-info submit-btn btnRegister" onclick="doctorSubmit()" th:value="#{sign.up}"/>

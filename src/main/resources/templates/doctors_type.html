@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="fragment/header" th:with="activeTab='doctors'" lang="en">
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/doctors.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/common.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/doctors_type.css}">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+    <script th:src="@{/js/filter.js}"></script>
+</head>
+<body class="y-allow">
+<div th:replace=":: navbar">Navbar</div>
+
+<div layout:fragment="content">
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row header-text">
+                <div class="col-md-4 col-md-offset-5">
+                    <span class="h1" th:text="${#messages.msg(#request.getAttribute('doctor.type'))}">Dentist</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-5 filter-block">
+                    <div class="container-fluid">
+                        <div class="border">
+                            <div class="row filter">
+                                <div class="col-md-12 firstname">
+                                    <input type="text" id="firstname-filter" class="form-control input-lg" name="firstname" th:placeholder="#{first.name('')}" value=""/>
+                                </div>
+                            </div>
+                            <div class="row filter">
+                                <div class="col-md-12 lastname">
+                                    <input type="text" id="lastname-filter" class="form-control input-lg" name="lastname" th:placeholder="#{last.name('')}"
+                                           value=""/></div>
+                            </div>
+                            <div class="row filter">
+                                <div class="col-md-12 city">
+                                    <input type="text" id="city-filter" class="form-control input-lg" name="city" th:placeholder="#{city('')}" value=""/>
+                                </div>
+                            </div>
+                            <div class="row filter">
+                                <div class="col-md-10 price_label" th:text="#{price.range}"></div>
+                            </div>
+                            <div class="row filter">
+                                <div class="col-md-1 col-md-offset-1 min" th:text="#{min}">min</div>
+                                <div class="col-md-3 col-md-offset-1">
+                                    <input id="min_price" type="number" class="form-control output" name="price" th:value="${min_price}" readonly/>
+                                </div>
+                                <div class="col-md-5 min_range">
+                                    <input id="min-range" type="range" th:max="${max_price}"  th:min="${min_price}" th:value="${min_price}" oninput="showMin(this.value)" name="min_range">
+                                </div>
+                            </div>
+
+                            <div class="row filter">
+                                <div class="col-md-1 col-md-offset-1 max" th:text="#{max}">max</div>
+                                <div class="col-md-3 col-md-offset-1">
+                                    <input id="max_price" type="number" class="form-control output" name="price" th:value="${max_price}" readonly/>
+                                </div>
+                                <div class="col-md-5 max_range">
+                                    <input id="max-range" type="range" th:min="${min_price}" th:max="${max_price}" th:value="${max_price}" oninput="showMax(this.value)" name="max_range">
+                                </div>
+                            </div>
+                            <div class="row filter">
+                                <div class="col-md-8 sort_label" th:text="#{sort.by.rate}">Sort by rate</div>
+                            </div>
+                            <div class="row filter">
+                                <div class="col-md-12 toggle">
+                                    <input id="sort_by" type="checkbox" checked data-toggle="toggle" data-onstyle="success" data-offstyle="info"
+                                           data-style="ios" th:data-on="#{from.max.to.min}" th:data-off="#{from.min.to.max}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row filter">
+                            <div class="col-md-4 col-md-offset-4">
+                                <button id="reset-button" class="btn btn-warning button btn-lg" th:text="#{reset}">Filter</button>
+                            </div>
+                            <div class="col-md-4">
+                                <button id="filter-button" class="btn btn-primary button btn-lg" th:text="#{filter}">Filter</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6" id="doctors">
+                    <div class="container-fluid block card" th:each="doctor : ${doctors}">
+                        <div class="row">
+                            <input class="rate-val" type="text" th:value="${doctor.rate}" hidden />
+                            <div class="col-md-3 image"><img class="image rounded mx-auto" th:src="*{'data:image/png;base64,'+ doctor.encodeAvatar}"></div>
+                            <div class="col-md-8 col-md-offset-1 description" th:text="${doctor.description}">
+                                descriptionsljgfjkhsjkfghjkhdjghjdhjg,snfjkbsjfjsjhfghjsgjhfjsfjgsjdfhjdhgjhdfjkgsnfgknsjkfhkfhkshfkhsf
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 firstname"><p class="card-text firstname-val" th:text="${doctor.firstname}">Firstname</p></div>
+                            <div class="col-md-3 col-md-offset-1 price"><p class="card-text price-val" th:text="${doctor.price}">price</p></div>
+                            <div class="col-md-3 col-md-offset-1 rate">
+                                <div class="rate-star-blocks" th:each="checked : ${#numbers.sequence(1, doctor.rate, 1)}">
+                                    <span class="fa fa-star checked"></span>
+                                </div>
+                                <div class="rate-star-blocks" th:each="unchecked : ${#numbers.sequence(1, 5 - doctor.rate, 1)}">
+                                    <span class="fa fa-star"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 lastname"><p class="card-text lastname-val" th:text="${doctor.lastname}">lastname</p></div>
+                            <div class="col-md-3 col-md-offset-1 city"><p class="card-text city-val" th:text="${doctor.city}">city</p></div>
+                            <div class="col-md-3 col-md-offset-1 button-div dropright">
+                                <button class="btn btn-primary button dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                                        aria-expanded="false" ><span th:text="#{write.him}"> Write him</span>
+                                    <span class="glyphicon glyphicon-triangle-right"></span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

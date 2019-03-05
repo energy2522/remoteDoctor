@@ -16,6 +16,7 @@ import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 
 import com.remote.doctor.converter.ClientDtoToClientConverter;
 import com.remote.doctor.converter.DoctorDtoToDoctorConverter;
+import com.remote.doctor.converter.DoctorToDoctorDtoConverter;
 
 @SpringBootApplication
 public class RemoteDoctorApplication implements WebMvcConfigurer{
@@ -44,6 +45,7 @@ public class RemoteDoctorApplication implements WebMvcConfigurer{
 	public void addFormatters(FormatterRegistry registry) {
 		registry.addConverter(new ClientDtoToClientConverter(encoder));
 		registry.addConverter(new DoctorDtoToDoctorConverter(encoder));
+		registry.addConverter(new DoctorToDoctorDtoConverter());
 	}
 
 	@Override

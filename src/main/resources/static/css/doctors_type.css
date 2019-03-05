@@ -1,0 +1,101 @@
+.description{
+	border: 1px solid black;
+	margin-bottom: 1%;
+	margin-top: 1%;
+	overflow-wrap: break-word;
+}
+.container-fluid{
+	margin-left: 1em !important;
+	padding: 1% 2%;
+}
+.image-div,.description{
+	height: 180px;
+}
+
+.image-div {
+	width: 150px;
+	height: 180px;
+}
+
+.image {
+	width: 150px;
+	height: 180px;
+}
+
+.button-div, .firstname, .lastname, .price,
+.rate,.city, .block, .min,.max,.button,.price,
+.sort,.min_label,.max_label,.min_range,.max_range,
+.toggle, .filter{
+	margin-bottom: 1%;
+	margin-top: 1%;
+}
+
+.card {
+	padding: 4%;
+	background-color: #f0f0f0;
+	border-radius: 2%;
+}
+
+.button {
+	width: 100%;
+}
+
+.main{
+	border-radius: 1%;
+	background: #f8f9fa;
+}
+
+.content {
+	width: auto !important;
+}
+
+.output {
+	width: 10vh;
+	padding-left: 2vh;
+}
+
+.header-text {
+	margin-top: 1vh;
+	margin-bottom: 4vh;
+}
+.border {
+	padding: 1vh;
+	border-style: solid;
+	border-width: 1px;
+	border-radius: 2px;
+	border-color: #585f7b !important;
+}
+.toggle {
+	width: 100%;
+}
+
+.h1 {
+	font-family: 'Courier New';
+	font-weight: bold;
+	color: #607B8B;
+	padding: 30px;
+}
+
+.filter-block {
+	top: 0;
+	position: -webkit-sticky;
+	position: sticky;
+}
+
+.col-xs-offset-right-7 {
+	margin-right: 58.33333333%;
+}
+
+
+.checked {
+	color: orange;
+}
+
+.rate-star-blocks {
+	display: inline;
+}
+
+.rate {
+	font-size: 2.2vh;
+}
+
