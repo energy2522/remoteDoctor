@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="fragment/header" th:with="activeTab='cabinet'" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/common.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/cabinet.css}">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script th:src="@{/js/cabinet.js}"></script>
+</head>
+<body class="x-hidden">
+<div th:replace=":: navbar">Navbar</div>
+
+<div layout:fragment="content">
+    <div class="content">
+        <div class="row">
+            <div class="col-md-2 col-md-offset-2 menu">
+                <ul class="nav nav-pills nav-stacked">
+                    <li role="presentation" id="pill-profile" onclick="showItem(this)" class="active"><a href="#" th:text="#{profile}">Profile</a>
+                    </li>
+                    <li role="presentation" id="pill-money" onclick="showItem(this)"><a href="#" th:text="#{money}">Money</a></li>
+                </ul>
+            </div>
+            <div class="col-md-6 col-md-offset-1 menu-content">
+                <div id="pill-profile-tab" role="tabpanel" aria-labelledby="profile-tab">
+                    <form class="register-form" id="clientForm" enctype="multipart/form-data" th:action="@{/client-update}"
+                          method="post">
+                        <div class="row">
+                            <div class="col-md-6 col-md-offset-4">
+                                <input type='file' id="window" class="hidden" name="avatar" onclick="readURL(this);"
+                                       accept="image/png, image/jpeg" onchange="readURL(this);" th:value="@{/img/unknown-person.jpg}"/>
+                                <img id="blah1" onclick="clickWindow()" th:if="${client.encodeAvatar != null}" th:src="*{'data:image/png;base64,'+ client.encodeAvatar}" alt="your image"/>
+                                <img id="blah1" onclick="clickWindow()" th:unless="${client.encodeAvatar != null}" th:src="@{/img/unknown-person.jpg}" alt="your image"/>
+                                <p th:utext="#{your.avatar}">Your avatar</p>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <input class="hidden" th:value="${client.id}" name="id"/>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input id="username" type="text" class="form-control" name="username" th:placeholder="#{username(' *')}"
+                                           th:value="${client.username}" readonly/>
+                                </div>
+                                <div class="form-group">
+                                    <input id="password" type="password" class="form-control" name="password"
+                                           th:placeholder="#{password(' *')}"
+                                           value="***********" readonly/>
+                                </div>
+                                <div class="form-group">
+                                    <input id="confirm-password" type="password" class="form-control hidden"
+                                           th:placeholder="#{confirm.password(' *')}"
+                                           value=""/>
+                                </div>
+
+
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input id="firstname" type="text" class="form-control" name="firstname"
+                                           th:placeholder="#{first.name(' *')}"
+                                           th:value="${client.firstname}" readonly/>
+                                </div>
+                                <div class="form-group">
+                                    <input id="lastname" type="text" class="form-control" name="lastname"
+                                           th:placeholder="#{last.name(' *')}"
+                                           th:value="${client.lastname}" readonly/>
+                                </div>
+                                <div class="form-group">
+                                    <input id="phoneNumber" type="text" maxlength="10" name="phoneNumber" class="form-control"
+                                           th:placeholder="#{phone(' *')}" th:value="${client.phoneNumber}" readonly/>
+                                </div>
+
+                                <a href="#" id="change" class="btn btn-primary submit-btn" onclick="change()" th:text="#{change}">Change</a>
+                                <a href="#" id="cancel" class="btn btn-danger submit-btn hidden" onclick="cancel()" th:text="#{cancel}">Cancel</a>
+                                <input id="update" type="submit" class="btn btn-info submit-btn hidden" th:value="#{update}"/>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="hidden" id="pill-money-tab" role="tabpanel" aria-labelledby="money-tab">
+                    Money
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</body>
+</html>

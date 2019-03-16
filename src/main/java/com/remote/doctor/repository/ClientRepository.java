@@ -1,9 +1,10 @@
 package com.remote.doctor.repository;
 
-import com.remote.doctor.domain.Client;
 import org.springframework.data.repository.CrudRepository;
+
+import com.remote.doctor.domain.Client;
 
 public interface ClientRepository extends CrudRepository<Client, Integer> {
 
-    Client getClientByUsername(String username);
+    Client getByUsername(String username);
 }

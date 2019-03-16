@@ -22,7 +22,7 @@
                         : 'btn btn-info btn-lg btn3d margin-top'" role="button"><span th:utext="#{doctors}"></span></a>
                         <a href="#" th:class="${activeTab == 'messages'} ? 'btn btn-info btn-lg btn3d margin-top active'
                         : 'btn btn-info btn-lg btn3d margin-top'"><span th:utext="#{messages}"></span></a>
-                        <a href="#" th:class="${activeTab == 'cabinet'} ? 'btn btn-info btn-lg btn3d margin-top active'
+                        <a th:href="@{/client/cabinet}" th:class="${activeTab == 'cabinet'} ? 'btn btn-info btn-lg btn3d margin-top active'
                         : 'btn btn-info btn-lg btn3d margin-top'"><span th:utext="#{cabinet}"></span></a>
                         <a href="#" th:class="${activeTab == 'history'} ? 'btn btn-info btn-lg btn3d margin-top active'
                         : 'btn btn-info btn-lg btn3d margin-top'"><span th:utext="#{history}"></span></a>

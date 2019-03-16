@@ -6,6 +6,8 @@ import lombok.Data;
 
 @Data
 public class ClientDto {
+    private int id;
+
     private String username;
 
     private String password;
@@ -17,4 +19,6 @@ public class ClientDto {
     private String phoneNumber;
 
     private MultipartFile avatar;
+
+    private String encodeAvatar;
 }

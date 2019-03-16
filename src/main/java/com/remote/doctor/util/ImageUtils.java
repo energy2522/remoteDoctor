@@ -33,6 +33,10 @@ public final class ImageUtils {
     private static byte[] compressImageToPng(InputStream imageInputStream) throws IOException {
             BufferedImage bufferedImage = ImageIO.read(imageInputStream);
 
+            if (bufferedImage == null) {
+                return null;
+            }
+
             bufferedImage = Thumbnails.of(bufferedImage).size(WIDTH, HEIGHT).outputFormat(EXTENSION).asBufferedImage();
 
             ByteArrayOutputStream outputStream = new ByteArrayOutputStream();

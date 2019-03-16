@@ -1,0 +1,26 @@
+.menu {
+    font-size: 2vh !important;
+    background-color: white;
+    padding: 2vh;
+    border-radius: 2vh;
+}
+
+.menu-content {
+    background-color: white;
+    padding: 4vh;
+    border-radius: 2vh;
+}
+
+.content {
+    height: 100vh;
+    padding-top: 10vh;
+}
+
+.form-control {
+    margin-top: 3vh;
+}
+
+#blah1 {
+    width: 150px;
+    height: 180px;
+}

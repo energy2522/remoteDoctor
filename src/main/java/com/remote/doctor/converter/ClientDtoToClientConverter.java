@@ -20,6 +20,7 @@ public class ClientDtoToClientConverter implements Converter<ClientDto, Client> 
     public Client convert(ClientDto source) {
         Client client = new Client();
 
+        client.setId(source.getId());
         client.setUsername(source.getUsername());
         client.setPassword(encoder.encode(source.getPassword()));
         client.setFirstname(source.getUsername());

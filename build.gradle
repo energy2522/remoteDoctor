@@ -32,6 +32,7 @@ dependencies {
 	implementation('nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect')
 	implementation('org.thymeleaf.extras:thymeleaf-extras-springsecurity4')
 	implementation('net.coobird:thumbnailator:0.4.3')
+	implementation('org.apache.commons:commons-lang3:3.0')
 	runtimeOnly('mysql:mysql-connector-java')
 	compileOnly('org.projectlombok:lombok')
 }

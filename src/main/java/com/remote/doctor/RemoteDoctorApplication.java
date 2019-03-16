@@ -15,6 +15,7 @@ import org.springframework.web.servlet.i18n.CookieLocaleResolver;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 
 import com.remote.doctor.converter.ClientDtoToClientConverter;
+import com.remote.doctor.converter.ClientToClientDtoConverter;
 import com.remote.doctor.converter.DoctorDtoToDoctorConverter;
 import com.remote.doctor.converter.DoctorToDoctorDtoConverter;
 
@@ -46,6 +47,7 @@ public class RemoteDoctorApplication implements WebMvcConfigurer{
 		registry.addConverter(new ClientDtoToClientConverter(encoder));
 		registry.addConverter(new DoctorDtoToDoctorConverter(encoder));
 		registry.addConverter(new DoctorToDoctorDtoConverter());
+		registry.addConverter(new ClientToClientDtoConverter());
 	}
 
 	@Override

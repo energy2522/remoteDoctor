@@ -74,6 +74,28 @@ public class LoginController {
         return "main_doctor";
     }
 
+    @RequestMapping("/client/cabinet")
+    public String goToCabinet(Model model) {
+        int id = securityService.getLoggedUserId();
+
+        ClientDto client = userService.getClientById(id);
+
+        model.addAttribute("client", client);
+
+        return "client_cabinet";
+    }
+
+    @RequestMapping(value = "/client-update", method = RequestMethod.POST)
+    public String updateClient(ClientDto clientDTO, BindingResult bindingResult, RedirectAttributes attributes) {
+        List<String> errors = userService.updateOldClient(clientDTO);
+
+        if (!errors.isEmpty()) {
+            attributes.addFlashAttribute("errors", errors);
+        }
+
+        return "redirect:/client/cabinet";
+    }
+
     @RequestMapping("/logout-success")
     public String logout() {
         return "feed";
@@ -88,7 +110,7 @@ public class LoginController {
 
     @RequestMapping(value = "/client-singup", method = RequestMethod.POST)
     public String signUpClient(ClientDto clientDTO, BindingResult bindingResult, RedirectAttributes attributes) {
-        List<String> errors = userService.signUpClient(clientDTO);
+        List<String> errors = userService.clientSignUp(clientDTO);
 
         if (!errors.isEmpty()) {
             attributes.addFlashAttribute("errors", errors);

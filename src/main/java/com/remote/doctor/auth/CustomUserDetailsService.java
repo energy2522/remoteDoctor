@@ -35,7 +35,7 @@ public class CustomUserDetailsService implements UserDetailsService{
     }
 
     private User loadUser(String username) {
-        User user = clientRepository.getClientByUsername(username);
+        User user = clientRepository.getByUsername(username);
 
         if (Objects.isNull(user)) {
             user = doctorRepository.getDoctorByUsername(username);

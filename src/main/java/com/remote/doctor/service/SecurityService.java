@@ -1,5 +1,6 @@
 package com.remote.doctor.service;
 
+import com.remote.doctor.auth.CustomUserDetails;
 import com.remote.doctor.auth.CustomUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -26,6 +27,11 @@ public class SecurityService {
 		if (authenticationToken.isAuthenticated()) {
 			SecurityContextHolder.getContext().setAuthentication(authenticationToken);
 		}
+	}
 
+	public int getLoggedUserId() {
+		CustomUserDetails userDetails = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+		return userDetails.getId();
 	}
 }
