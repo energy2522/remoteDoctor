@@ -6,5 +6,4 @@ import com.remote.doctor.domain.Client;
 
 public interface ClientRepository extends CrudRepository<Client, Integer> {
 
-    Client getByUsername(String username);
 }

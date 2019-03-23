@@ -13,7 +13,7 @@
     <nav class="navbar navbar-inverse header">
         <div class="container-fluid menu-padding">
             <a class="navbar-brand" href="#"><p class="brand text-center"><strong>Remote Doctor</strong></p></a>
-            <div sec:authorize="isAuthenticated()">
+            <div sec:authorize="hasRole('ROLE_CLIENT')">
                 <div class="navbar-collapse collapse navbar-right">
                     <ul class="nav navbar-nav">
                         <a th:href="@{/client/feed}" th:class="${activeTab == 'feed'} ? 'btn btn-info btn-lg btn3d margin-top active'
@@ -24,8 +24,8 @@
                         : 'btn btn-info btn-lg btn3d margin-top'"><span th:utext="#{messages}"></span></a>
                         <a th:href="@{/client/cabinet}" th:class="${activeTab == 'cabinet'} ? 'btn btn-info btn-lg btn3d margin-top active'
                         : 'btn btn-info btn-lg btn3d margin-top'"><span th:utext="#{cabinet}"></span></a>
-                        <a href="#" th:class="${activeTab == 'history'} ? 'btn btn-info btn-lg btn3d margin-top active'
-                        : 'btn btn-info btn-lg btn3d margin-top'"><span th:utext="#{history}"></span></a>
+                        <!--<a href="#" th:class="${activeTab == 'history'} ? 'btn btn-info btn-lg btn3d margin-top active'-->
+                        <!--: 'btn btn-info btn-lg btn3d margin-top'"><span th:utext="#{history}"></span></a>-->
                         <a href="#" th:class="${activeTab == 'about'} ? 'btn btn-info btn-lg btn3d margin-top active'
                         : 'btn btn-info btn-lg btn3d margin-top'"><span th:utext="#{about}"></span></a>
                         <a th:href="@{/logout}" th:class="'btn btn-warning btn-lg btn3d margin-top'"><span th:utext="#{log.out}"></span></a>
@@ -37,6 +37,31 @@
                         <!--<input type="text" class="form-control margin-top" th:placeholder="#{search}">-->
                     <!--</div>-->
                     <!--<button type="submit" class="btn btn-primary margin-top" th:utext="#{search}"></button>-->
+                <!--</form>-->
+            </div>
+
+            <div sec:authorize="hasRole('ROLE_DOCTOR')">
+                <div class="navbar-collapse collapse navbar-right">
+                    <ul class="nav navbar-nav">
+                        <a th:href="@{/doctor/feed}" th:class="${activeTab == 'feed'} ? 'btn btn-info btn-lg btn3d margin-top active'
+                        : 'btn btn-info btn-lg btn3d margin-top'" role="button"><span th:utext="#{feed}"></span></a>
+                        <a href="#" th:class="${activeTab == 'messages'} ? 'btn btn-info btn-lg btn3d margin-top active'
+                        : 'btn btn-info btn-lg btn3d margin-top'"><span th:utext="#{messages}"></span></a>
+                        <a th:href="@{/doctor/cabinet}" th:class="${activeTab == 'cabinet'} ? 'btn btn-info btn-lg btn3d margin-top active'
+                        : 'btn btn-info btn-lg btn3d margin-top'"><span th:utext="#{cabinet}"></span></a>
+                        <!--<a href="#" th:class="${activeTab == 'history'} ? 'btn btn-info btn-lg btn3d margin-top active'-->
+                        <!--: 'btn btn-info btn-lg btn3d margin-top'"><span th:utext="#{history}"></span></a>-->
+                        <a href="#" th:class="${activeTab == 'about'} ? 'btn btn-info btn-lg btn3d margin-top active'
+                        : 'btn btn-info btn-lg btn3d margin-top'"><span th:utext="#{about}"></span></a>
+                        <a th:href="@{/logout}" th:class="'btn btn-warning btn-lg btn3d margin-top'"><span th:utext="#{log.out}"></span></a>
+                    </ul>
+                </div>
+
+                <!--<form class="navbar-form navbar-left" role="search">-->
+                <!--<div class="form-group">-->
+                <!--<input type="text" class="form-control margin-top" th:placeholder="#{search}">-->
+                <!--</div>-->
+                <!--<button type="submit" class="btn btn-primary margin-top" th:utext="#{search}"></button>-->
                 <!--</form>-->
             </div>
 

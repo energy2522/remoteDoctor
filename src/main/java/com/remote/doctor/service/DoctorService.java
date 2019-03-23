@@ -4,8 +4,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
+import javax.print.Doc;
+
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.stereotype.Service;
@@ -63,6 +67,10 @@ public class DoctorService {
         return doctors.stream().min(new DoctorPriceComparator()).get().getPrice();
     }
 
+    public DoctorDto getDoctorById(int id) {
+        return conversionService.convert(doctorRepository.findById(id).orElse(null), DoctorDto.class);
+    }
+
     private DoctorType getDoctorType(String type) {
         DoctorType doctorType = doctorTypeRepository.getByName(type);
 
@@ -77,11 +85,41 @@ public class DoctorService {
         return doctorType;
     }
 
+    public List<String> updateOldDoctor(DoctorDto doctorDTO) {
+        Doctor newClient = conversionService.convert(doctorDTO, Doctor.class);
+        Doctor oldClient = doctorRepository.findById(doctorDTO.getId()).get();
+
+        updateOldClient(newClient, oldClient);
+
+        doctorRepository.save(oldClient);
+
+        return Collections.emptyList();//TODO should be rewrite with validation
+    }
+
     private class DoctorPriceComparator implements Comparator<DoctorDto> {
 
         @Override
         public int compare(DoctorDto a, DoctorDto b) {
             return Double.valueOf(a.getPrice() - b.getPrice()).intValue();
         }
+    }
+
+    private void updateOldClient(Doctor newDoctor, Doctor oldDoctor) {
+        if (Objects.nonNull(newDoctor.getAvatar())) {
+            oldDoctor.setAvatar(newDoctor.getAvatar());
+        }
+
+        if (StringUtils.isNotBlank(newDoctor.getPassword())) {
+            oldDoctor.setPassword(newDoctor.getPassword());
+        }
+
+        oldDoctor.setPrice(newDoctor.getPrice());
+        oldDoctor.setDoctorType(getDoctorType(newDoctor.getDoctorType().getName()));
+        oldDoctor.setDescription(newDoctor.getDescription());
+        oldDoctor.setCity(newDoctor.getCity());
+        oldDoctor.setPhoneNumber(newDoctor.getPhoneNumber());
+        oldDoctor.setUsername(newDoctor.getUsername());
+        oldDoctor.setLastname(newDoctor.getLastname());
+        oldDoctor.setFirstname(newDoctor.getFirstname());
     }
 }

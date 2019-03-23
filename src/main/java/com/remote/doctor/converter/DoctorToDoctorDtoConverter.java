@@ -13,6 +13,7 @@ public class DoctorToDoctorDtoConverter implements Converter<Doctor, DoctorDto> 
     public DoctorDto convert(Doctor source) {
         DoctorDto doctorDto = new DoctorDto();
 
+        doctorDto.setId(source.getId());
         doctorDto.setUsername(source.getUsername());
         doctorDto.setFirstname(source.getFirstname());
         doctorDto.setLastname(source.getLastname());
@@ -23,8 +24,11 @@ public class DoctorToDoctorDtoConverter implements Converter<Doctor, DoctorDto> 
         doctorDto.setDescription(source.getDescription());
         doctorDto.setRate(Math.round(source.getRate()));
 
-        String encodeImage = Base64.getEncoder().encodeToString(source.getAvatar());
-        doctorDto.setEncodeAvatar(encodeImage);
+        if (source.getAvatar() != null) {
+            String encodeImage = Base64.getEncoder().encodeToString(source.getAvatar());
+            doctorDto.setEncodeAvatar(encodeImage);
+
+        }
 
         return doctorDto;
     }

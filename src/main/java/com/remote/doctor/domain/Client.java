@@ -7,6 +7,7 @@ import javax.persistence.*;
 @Data
 @Entity
 @Table(name = "client")
+@PrimaryKeyJoinColumn(name = "uid")
 public class Client extends User{
 
     @Column(name = "firstname")
@@ -23,5 +24,4 @@ public class Client extends User{
 
     @Column(name = "avatar")
     private byte[] avatar;
-
 }

@@ -15,7 +15,7 @@ import com.remote.doctor.dto.ClientDto;
 import com.remote.doctor.dto.DoctorDto;
 import com.remote.doctor.service.DoctorService;
 import com.remote.doctor.service.SecurityService;
-import com.remote.doctor.service.UserService;
+import com.remote.doctor.service.ClientService;
 
 @Controller
 public class LoginController {
@@ -24,7 +24,7 @@ public class LoginController {
     private SecurityService securityService;
 
     @Autowired
-    private UserService userService;
+    private ClientService clientService;
 
     @Autowired
     private DoctorService doctorService;
@@ -41,7 +41,7 @@ public class LoginController {
 
     @RequestMapping("/admin/main")
     public String successAdmin() {
-        return "main_admin";
+        return "feed";
     }
 
     @RequestMapping("/client/feed")
@@ -69,25 +69,47 @@ public class LoginController {
         return "doctors_type";
     }
 
-    @RequestMapping("/doctor/main")
+    @RequestMapping("/doctor/feed")
     public String successDoctor() {
-        return "main_doctor";
+        return "feed";
     }
 
     @RequestMapping("/client/cabinet")
     public String goToCabinet(Model model) {
         int id = securityService.getLoggedUserId();
 
-        ClientDto client = userService.getClientById(id);
+        ClientDto client = clientService.getClientById(id);
 
         model.addAttribute("client", client);
 
         return "client_cabinet";
     }
 
+    @RequestMapping("/doctor/cabinet")
+    public String goToDoctorCabinet(Model model) {
+        int id = securityService.getLoggedUserId();
+
+        DoctorDto doctor = doctorService.getDoctorById(id);
+
+        model.addAttribute("doctor", doctor);
+        model.addAttribute("types", doctorService.getAllTypes());
+        return "doctor_cabinet";
+    }
+
+    @RequestMapping("/doctor-update")
+    public String updateDoctor(DoctorDto doctorDTO, BindingResult bindingResult, RedirectAttributes attributes) {
+        List<String> errors = doctorService.updateOldDoctor(doctorDTO);
+
+        if (!errors.isEmpty()) {
+            attributes.addFlashAttribute("errors", errors);
+        }
+
+        return "redirect:/doctor/cabinet";
+    }
+
     @RequestMapping(value = "/client-update", method = RequestMethod.POST)
     public String updateClient(ClientDto clientDTO, BindingResult bindingResult, RedirectAttributes attributes) {
-        List<String> errors = userService.updateOldClient(clientDTO);
+        List<String> errors = clientService.updateOldClient(clientDTO);
 
         if (!errors.isEmpty()) {
             attributes.addFlashAttribute("errors", errors);
@@ -110,7 +132,7 @@ public class LoginController {
 
     @RequestMapping(value = "/client-singup", method = RequestMethod.POST)
     public String signUpClient(ClientDto clientDTO, BindingResult bindingResult, RedirectAttributes attributes) {
-        List<String> errors = userService.clientSignUp(clientDTO);
+        List<String> errors = clientService.clientSignUp(clientDTO);
 
         if (!errors.isEmpty()) {
             attributes.addFlashAttribute("errors", errors);

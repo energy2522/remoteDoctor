@@ -6,6 +6,8 @@ import lombok.Data;
 
 @Data
 public class DoctorDto {
+    private int id;
+
     private String username;
 
     private String password;

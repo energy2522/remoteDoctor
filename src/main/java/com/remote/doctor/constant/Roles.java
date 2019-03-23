@@ -1,7 +1,7 @@
 package com.remote.doctor.constant;
 
 public enum Roles {
-    CLIENT("ROLE_client"),  DOCTOR("ROLE_doctor"), ADMIN("ROLE_admin");
+    CLIENT("ROLE_CLIENT"),  DOCTOR("ROLE_DOCTOR"), ADMIN("ROLE_ADMIN");
 
     private String val;
 

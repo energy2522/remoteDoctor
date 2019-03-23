@@ -22,11 +22,16 @@ function change() {
     $('#firstname').removeAttr('readonly');
     $('#lastname').removeAttr('readonly');
     $('#phoneNumber').removeAttr('readonly');
+    $('#description').removeAttr('readonly');
+    $('#price').removeAttr('readonly');
+    $('#city').removeAttr('readonly');
 
     $('#confirm-password').removeClass('hidden');
+    $('#type').removeClass('hidden');
     $('#update').removeClass('hidden');
     $('#cancel').removeClass('hidden');
     $('#change').addClass('hidden');
+    $('#type_text').addClass('hidden');
 }
 
 function readURL(input) {

@@ -1,5 +1,6 @@
 package com.remote.doctor.converter;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
@@ -22,12 +23,16 @@ public class ClientDtoToClientConverter implements Converter<ClientDto, Client> 
 
         client.setId(source.getId());
         client.setUsername(source.getUsername());
-        client.setPassword(encoder.encode(source.getPassword()));
         client.setFirstname(source.getUsername());
         client.setLastname(source.getLastname());
         client.setPhoneNumber(source.getPhoneNumber());
         client.setRole(createClientRole());
         client.setAvatar(ImageUtils.getImageFromFile(source.getAvatar()));
+
+
+        if (StringUtils.isNotBlank(source.getPassword())) {
+            client.setPassword(encoder.encode(source.getPassword()));
+        }
 
         return client;
     }

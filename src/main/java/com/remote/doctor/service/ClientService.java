@@ -10,11 +10,13 @@ import org.springframework.core.convert.ConversionService;
 import org.springframework.stereotype.Service;
 
 import com.remote.doctor.domain.Client;
+import com.remote.doctor.domain.User;
 import com.remote.doctor.dto.ClientDto;
 import com.remote.doctor.repository.ClientRepository;
+import com.remote.doctor.repository.UserRepository;
 
 @Service
-public class UserService {
+public class ClientService {
     @Autowired
     private ClientRepository clientRepository;
 
