@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="fragment/header" th:with="activeTab='messages'" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/common.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/chats_list.css}">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div th:replace=":: navbar">Navbar</div>
+
+<div layout:fragment="content">
+    <div class="content">
+        <div class="row">
+            <div class="col-md-5 col-md-offset-4">
+                <div class="chat" th:each="chat : ${chats}">
+                    <div th:if="${chat.isBlocked()}">
+                        <img th:if="${chat.encodeAvatar == null}" th:src="@{/img/unknown-person.jpg}" alt="Avatar">
+                        <img th:unless="${chat.encodeAvatar == null}" th:src="*{'data:image/png;base64,'+ chat.encodeAvatar}" alt="Avatar">
+                        <div class="user">
+                            <p th:text="${chat.fullName}">User</p>
+                        </div>
+                        <div class="last_message">
+                            <p class="message_text"><span th:if="${chat.isFromCurrentUser()}" th:text="#{from.you}">From you: </span><span
+                                    th:text="${chat.lastMessage}"></span></p>
+                        </div>
+                    </div>
+                    <a th:unless="${chat.isBlocked()}" th:href="@{'/chat/' + ${chat.id}}">
+                        <img th:if="${chat.encodeAvatar == null}" th:src="@{/img/unknown-person.jpg}" alt="Avatar">
+                        <img th:unless="${chat.encodeAvatar == null}" th:src="*{'data:image/png;base64,'+ chat.encodeAvatar}" alt="Avatar">
+                        <div class="user">
+                            <p th:text="${chat.fullName}">User</p>
+                        </div>
+                        <div class="last_message">
+                            <p class="message_text"><span th:if="${chat.isFromCurrentUser()}"><span th:text="#{from.you}"> From you:</span> </span><span
+                                    th:text="${chat.lastMessage}"></span></p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

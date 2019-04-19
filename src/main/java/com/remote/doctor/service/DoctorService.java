@@ -60,11 +60,11 @@ public class DoctorService {
     }
 
     public double getMaxPrice(List<DoctorDto> doctors) {
-        return doctors.stream().max(new DoctorPriceComparator()).get().getPrice();
+        return doctors.stream().max(new DoctorPriceComparator()).orElse(new DoctorDto()).getPrice();
     }
 
     public double getMinPrice(List<DoctorDto> doctors) {
-        return doctors.stream().min(new DoctorPriceComparator()).get().getPrice();
+        return doctors.stream().min(new DoctorPriceComparator()).orElse(new DoctorDto()).getPrice();
     }
 
     public DoctorDto getDoctorById(int id) {
@@ -85,6 +85,7 @@ public class DoctorService {
         return doctorType;
     }
 
+    @Transactional
     public List<String> updateOldDoctor(DoctorDto doctorDTO) {
         Doctor newClient = conversionService.convert(doctorDTO, Doctor.class);
         Doctor oldClient = doctorRepository.findById(doctorDTO.getId()).get();

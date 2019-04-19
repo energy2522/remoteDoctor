@@ -1,5 +1,7 @@
 package com.remote.doctor.service;
 
+import java.security.Principal;
+
 import com.remote.doctor.auth.CustomUserDetails;
 import com.remote.doctor.auth.CustomUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,8 +31,9 @@ public class SecurityService {
 		}
 	}
 
-	public int getLoggedUserId() {
-		CustomUserDetails userDetails = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+	public int getLoggedUserId(Principal principal) {
+		UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = (UsernamePasswordAuthenticationToken) principal;
+		CustomUserDetails userDetails = (CustomUserDetails) usernamePasswordAuthenticationToken.getPrincipal();
 
 		return userDetails.getId();
 	}

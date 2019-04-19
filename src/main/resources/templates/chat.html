@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+      layout:decorate="fragment/header" th:with="activeTab='messages'" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/common.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/chat.css}">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script th:src="@{/js/socket.js}"></script>
+</head>
+<body class="y-allow x-hidden" onload="Load()">
+<div th:replace=":: navbar">Navbar</div>
+
+<div layout:fragment="content">
+    <div class="content">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-1 back-button">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <nav aria-label="...">
+                                    <ul class="pager">
+                                        <li class="previous"><a th:href="@{/messages}"><span aria-hidden="true">&larr;</span> <span th:text="#{back.to.chats}">Back to chats</span></a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5 col-md-offset-2">
+                    <div class="container">
+                        <!--<div >-->
+                        <div class="user">
+                            <p class="h1 recipient" th:text="${recipient.fullName}">Recipient</p>
+                            <input type="hidden" id="chatId" th:value="${chatId}"/>
+                        </div>
+                        <!--</div>-->
+
+                        <div class="row">
+                            <div id="canvas" class="col-md-8 canvas" th:if="${history.isEmpty()}">
+                                <p id="default_text"><span th:text="#{no.messages}"> There is no any message!</span><br/> <span th:text="#{write.some}">Write some message</span></p>
+                            </div>
+
+                            <div id="canvas" th:unless="${history.isEmpty()}" class="col-md-8 canvas">
+                                <div th:each="message : ${history}">
+                                    <div th:if="${sender.username eq message.fromId}" class="message darker">
+                                        <img th:if="${sender.encodeAvatar == null}" th:src="@{/img/unknown-person.jpg}" alt="Avatar"
+                                             class="right">
+                                        <img th:unless="${sender.encodeAvatar == null}"
+                                             th:src="*{'data:image/png;base64,'+ sender.encodeAvatar}" alt="Avatar" class="right">
+                                        <p th:text="${message.messageText}">Message</p>
+                                        <span class="time-left" th:text="${message.sendDate}">00:00</span>
+                                    </div>
+
+                                    <div th:unless="${sender.username eq message.fromId}" class="message">
+                                        <img th:if="${recipient.encodeAvatar == null}" th:src="@{/img/unknown-person.jpg}" alt="Avatar">
+                                        <img th:unless="${recipient.encodeAvatar == null}"
+                                             th:src="*{'data:image/png;base64,'+ recipient.encodeAvatar}" alt="Avatar">
+
+                                        <p th:text="${message.messageText}">Message</p>
+                                        <span class="time-right" th:text="${message.sendDate}">00:00</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 enter-message">
+                            <!--<form class="form-group">-->
+                            <div class="panel-footer form-group">
+                                <div class="input-group">
+                                    <input id="messageText" type="text" class="form-control" th:placeholder="#{enter.message}">
+                                    <span class="input-group-btn">
+                        <button class="btn btn-primary" id="sendButton" type="button" th:text="#{send}">SEND</button>
+                    </span>
+                                </div>
+                            </div>
+                            <!--</form>-->
+                        </div>
+                    </div>
+                </div>
+                <div sec:authorize="hasRole('ROLE_CLIENT')" class="col-md-1 col-md-offset-2 back-button">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <nav aria-label="...">
+                                    <ul class="pager">
+                                        <li class="next" data-toggle="modal" data-target="#myModal"><a href="#"><span th:text="#{finish.dialog}"> Finish dialog </span><span
+                                                aria-hidden="true"> &rarr;</span></a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="myModal" role="dialog">
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title" th:text="#{next.step}">Next step</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p th:text="#{finish.conditional}">If the doctor didn't help you. You can open discussion or you can close dialog</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal" th:text="#{cancel}">Cancel</button>
+                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#discussion" th:text="#{open.discussion}">Open discussion
+                            </button>
+                            <button type="button" class="btn btn-primary" th:text="#{finish.conversation}">Finish conversation</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="modal fade" id="discussion" role="dialog">
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title" th:text="#{discussion}">Discussion</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form id="discussion_form" th:action="@{/discussion/open}" method="post">
+                                <input type="hidden" name="chatId" th:value="${chatId}"/>
+                                <div class="input-group">
+                                    <label for="startDate" th:text="#{start.conversation.date}">Start date of conversation</label>
+                                    <input id="startDate" name="startDate" class="form-control" type="date">
+                                </div>
+                                <div class="input-group">
+                                    <label for="comment" th:text="#{discussion.comment}">Comment (reason of discussion)</label>
+                                    <textarea id="comment" name="comment" class="form-control"></textarea>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal" th:text="#{cancel}">Cancel</button>
+                            <button id="send_discussion" type="button" class="btn btn-primary" th:text="#{send}">Send</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="hidden">
+                <input id="recipient_username" type="text" class="hidden" th:value="${recipient.username}"/>
+                <div id="sender_message">
+                    <div class="message darker">
+                        <img th:if="${sender.encodeAvatar == null}" th:src="@{/img/unknown-person.jpg}" class="right">
+                        <img th:unless="${sender.encodeAvatar == null}" th:src="*{'data:image/png;base64,'+ sender.encodeAvatar}"
+                             alt="Avatar"
+                             class="right">
+                        <p>{{ message }}</p>
+                        <span class="time-left">{{ sendDate }}</span>
+                    </div>
+                </div>
+
+                <div id="recipient_message">
+                    <div class="message">
+                        <img th:if="${recipient.encodeAvatar == null}" th:src="@{/img/unknown-person.jpg}" alt="Avatar">
+                        <img th:unless="${recipient.encodeAvatar == null}"
+                             th:src="*{'data:image/png;base64,'+ recipient.encodeAvatar}" alt="Avatar">
+                        <p>{{ message }}</p>
+                        <span class="time-right">00:00</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

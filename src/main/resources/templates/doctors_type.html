@@ -37,17 +37,20 @@
                         <div class="border">
                             <div class="row filter">
                                 <div class="col-md-12 firstname">
-                                    <input type="text" id="firstname-filter" class="form-control input-lg" name="firstname" th:placeholder="#{first.name('')}" value=""/>
+                                    <input type="text" id="firstname-filter" class="form-control input-lg" name="firstname"
+                                           th:placeholder="#{first.name('')}" value=""/>
                                 </div>
                             </div>
                             <div class="row filter">
                                 <div class="col-md-12 lastname">
-                                    <input type="text" id="lastname-filter" class="form-control input-lg" name="lastname" th:placeholder="#{last.name('')}"
+                                    <input type="text" id="lastname-filter" class="form-control input-lg" name="lastname"
+                                           th:placeholder="#{last.name('')}"
                                            value=""/></div>
                             </div>
                             <div class="row filter">
                                 <div class="col-md-12 city">
-                                    <input type="text" id="city-filter" class="form-control input-lg" name="city" th:placeholder="#{city('')}" value=""/>
+                                    <input type="text" id="city-filter" class="form-control input-lg" name="city"
+                                           th:placeholder="#{city('')}" value=""/>
                                 </div>
                             </div>
                             <div class="row filter">
@@ -56,20 +59,24 @@
                             <div class="row filter">
                                 <div class="col-md-1 col-md-offset-1 min" th:text="#{min}">min</div>
                                 <div class="col-md-3 col-md-offset-1">
-                                    <input id="min_price" type="number" class="form-control output" name="price" th:value="${min_price}" readonly/>
+                                    <input id="min_price" type="number" class="form-control output" name="price" th:value="${min_price}"
+                                           readonly/>
                                 </div>
                                 <div class="col-md-5 min_range">
-                                    <input id="min-range" type="range" th:max="${max_price}"  th:min="${min_price}" th:value="${min_price}" oninput="showMin(this.value)" name="min_range">
+                                    <input id="min-range" type="range" th:max="${max_price}" th:min="${min_price}" th:value="${min_price}"
+                                           oninput="showMin(this.value)" name="min_range">
                                 </div>
                             </div>
 
                             <div class="row filter">
                                 <div class="col-md-1 col-md-offset-1 max" th:text="#{max}">max</div>
                                 <div class="col-md-3 col-md-offset-1">
-                                    <input id="max_price" type="number" class="form-control output" name="price" th:value="${max_price}" readonly/>
+                                    <input id="max_price" type="number" class="form-control output" name="price" th:value="${max_price}"
+                                           readonly/>
                                 </div>
                                 <div class="col-md-5 max_range">
-                                    <input id="max-range" type="range" th:min="${min_price}" th:max="${max_price}" th:value="${max_price}" oninput="showMax(this.value)" name="max_range">
+                                    <input id="max-range" type="range" th:min="${min_price}" th:max="${max_price}" th:value="${max_price}"
+                                           oninput="showMax(this.value)" name="max_range">
                                 </div>
                             </div>
                             <div class="row filter">
@@ -77,7 +84,8 @@
                             </div>
                             <div class="row filter">
                                 <div class="col-md-12 toggle">
-                                    <input id="sort_by" type="checkbox" checked data-toggle="toggle" data-onstyle="success" data-offstyle="info"
+                                    <input id="sort_by" type="checkbox" checked data-toggle="toggle" data-onstyle="success"
+                                           data-offstyle="info"
                                            data-style="ios" th:data-on="#{from.max.to.min}" th:data-off="#{from.min.to.max}">
                                 </div>
                             </div>
@@ -95,15 +103,18 @@
                 <div class="col-md-6" id="doctors">
                     <div class="container-fluid block card" th:each="doctor : ${doctors}">
                         <div class="row">
-                            <input class="rate-val" type="text" th:value="${doctor.rate}" hidden />
-                            <div class="col-md-3 image"><img class="image rounded mx-auto" th:src="*{'data:image/png;base64,'+ doctor.encodeAvatar}"></div>
+                            <input class="rate-val" type="text" th:value="${doctor.rate}" hidden/>
+                            <div class="col-md-3 image"><img class="image rounded mx-auto"
+                                                             th:src="*{'data:image/png;base64,'+ doctor.encodeAvatar}"></div>
                             <div class="col-md-8 col-md-offset-1 description" th:text="${doctor.description}">
                                 descriptionsljgfjkhsjkfghjkhdjghjdhjg,snfjkbsjfjsjhfghjsgjhfjsfjgsjdfhjdhgjhdfjkgsnfgknsjkfhkfhkshfkhsf
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-4 firstname"><p class="card-text firstname-val" th:text="${doctor.firstname}">Firstname</p></div>
-                            <div class="col-md-3 col-md-offset-1 price"><p class="card-text price-val" th:text="${doctor.price}">price</p></div>
+                            <div class="col-md-4 firstname"><p class="card-text firstname-val" th:text="${doctor.firstname}">Firstname</p>
+                            </div>
+                            <div class="col-md-3 col-md-offset-1 price"><p class="card-text price-val" th:text="${doctor.price}">price</p>
+                            </div>
                             <div class="col-md-3 col-md-offset-1 rate">
                                 <div class="rate-star-blocks" th:each="checked : ${#numbers.sequence(1, doctor.rate, 1)}">
                                     <span class="fa fa-star checked"></span>
@@ -114,14 +125,25 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-4 lastname"><p class="card-text lastname-val" th:text="${doctor.lastname}">lastname</p></div>
-                            <div class="col-md-3 col-md-offset-1 city"><p class="card-text city-val" th:text="${doctor.city}">city</p></div>
-                            <div class="col-md-3 col-md-offset-1 button-div dropright">
-                                <button class="btn btn-primary button dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                                        aria-expanded="false" ><span th:text="#{write.him}"> Write him</span>
-                                    <span class="glyphicon glyphicon-triangle-right"></span>
-                                </button>
-                            </div>
+                            <form th:action="@{/chat/create}" method="post">
+                                <input type="hidden" th:value="${doctor.id}" name="id">
+                                <div class="col-md-4 lastname"><p class="card-text lastname-val" th:text="${doctor.lastname}">lastname</p>
+                                </div>
+                                <div class="col-md-3 col-md-offset-1 city"><p class="card-text city-val" th:text="${doctor.city}">city</p>
+                                </div>
+                                <div class="col-md-3 col-md-offset-1 button-div dropright">
+                                    <button th:if="${client.amount >= doctor.price}" type="submit" class="btn btn-primary button dropdown-toggle"
+                                            aria-haspopup="true"
+                                            aria-expanded="false"><span th:text="#{write.him}"> Write him</span>
+                                        <span class="glyphicon glyphicon-triangle-right"></span>
+                                    </button>
+                                    <button th:unless="${client.amount >= doctor.price}" type="submit" class="btn btn-danger button dropdown-toggle"
+                                            aria-haspopup="true" disabled="disabled"
+                                            aria-expanded="false"><span th:text="#{write.him}"> </span>
+                                        <span class="glyphicon glyphicon-triangle-right"></span>
+                                    </button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>

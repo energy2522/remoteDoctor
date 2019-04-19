@@ -1,0 +1,97 @@
+.message {
+    border: 2px solid #dedede;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+/* Darker chat container */
+.darker {
+    border-color: #ccc;
+    background-color: #ddd;
+}
+
+/* Clear floats */
+.message::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+/* Style images */
+.message img {
+    float: left;
+    max-width: 60px;
+    width: 100%;
+    height: 8vh;
+    margin-right: 20px;
+    border-radius: 50%;
+}
+
+/* Style the right image */
+.message img.right {
+    float: right;
+    margin-left: 20px;
+    margin-right:0;
+}
+
+/* Style time text */
+.time-right {
+    float: right;
+    color: #aaa;
+}
+
+/* Style time text */
+.time-left {
+    float: left;
+    color: #999;
+}
+
+.user {
+    margin-bottom: 4vh;
+    font-size: 4vh;
+}
+
+.enter-message {
+    bottom: 0;
+    position: -webkit-sticky;
+    position: sticky;
+    margin-left: -15%;
+    width: 200%;
+}
+
+.back-button {
+    top: 0;
+    position: -webkit-sticky;
+    position: sticky;
+}
+
+.in-line {
+    display: inline;
+}
+
+.container {
+    margin-left: 0vh;
+}
+
+.canvas {
+    background-color: rgba(232, 232, 232, 0.78);
+    border-radius: 5px;
+    padding: 5%;
+    min-height: 20vh;
+}
+
+.recipient {
+    margin-left: 20%;
+}
+
+.deny li>a, .deny li>span{
+    background-color: #a30d11 !important;
+    color: #f8f9fa;
+}
+
+.accept li>a, .accept li>span {
+    background-color: #11830e !important;
+    color: #f8f9fa;
+}

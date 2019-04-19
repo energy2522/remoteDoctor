@@ -6,6 +6,7 @@ import org.springframework.core.convert.converter.Converter;
 
 import com.remote.doctor.domain.Doctor;
 import com.remote.doctor.dto.DoctorDto;
+import com.remote.doctor.util.ImageUtils;
 
 public class DoctorToDoctorDtoConverter implements Converter<Doctor, DoctorDto> {
 
@@ -23,12 +24,7 @@ public class DoctorToDoctorDtoConverter implements Converter<Doctor, DoctorDto> 
         doctorDto.setPrice(source.getPrice());
         doctorDto.setDescription(source.getDescription());
         doctorDto.setRate(Math.round(source.getRate()));
-
-        if (source.getAvatar() != null) {
-            String encodeImage = Base64.getEncoder().encodeToString(source.getAvatar());
-            doctorDto.setEncodeAvatar(encodeImage);
-
-        }
+        doctorDto.setEncodeAvatar(ImageUtils.encodeImage(source.getAvatar()));
 
         return doctorDto;
     }

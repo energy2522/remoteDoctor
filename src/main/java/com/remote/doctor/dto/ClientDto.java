@@ -21,4 +21,6 @@ public class ClientDto {
     private MultipartFile avatar;
 
     private String encodeAvatar;
+
+    private double amount;
 }

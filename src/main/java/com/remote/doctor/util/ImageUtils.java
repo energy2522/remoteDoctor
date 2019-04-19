@@ -4,6 +4,7 @@ import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Base64;
 
 import javax.imageio.ImageIO;
 
@@ -28,6 +29,14 @@ public final class ImageUtils {
         }
 
         return imageBytes;
+    }
+
+    public static String encodeImage(byte[] image) {
+        if (image == null) {
+            return null;
+        }
+
+        return Base64.getEncoder().encodeToString(image);
     }
 
     private static byte[] compressImageToPng(InputStream imageInputStream) throws IOException {

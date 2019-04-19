@@ -1,6 +1,7 @@
 .content {
     background-color: #B2DFEE;
     width: 100%;
+    min-height: 100vh;
 
     font-family: 'Courier New';
     font-weight: bold;

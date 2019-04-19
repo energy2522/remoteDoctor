@@ -16,8 +16,13 @@ import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 
 import com.remote.doctor.converter.ClientDtoToClientConverter;
 import com.remote.doctor.converter.ClientToClientDtoConverter;
+import com.remote.doctor.converter.DiscussionDtoToDiscussionConverter;
+import com.remote.doctor.converter.DiscussionToDiscussionInfoDto;
 import com.remote.doctor.converter.DoctorDtoToDoctorConverter;
 import com.remote.doctor.converter.DoctorToDoctorDtoConverter;
+import com.remote.doctor.converter.MessageDtoToMessageConverter;
+import com.remote.doctor.converter.MessageToMessageDtoConverter;
+import com.remote.doctor.converter.UserToCopyWriterConverter;
 
 @SpringBootApplication
 public class RemoteDoctorApplication implements WebMvcConfigurer{
@@ -44,10 +49,17 @@ public class RemoteDoctorApplication implements WebMvcConfigurer{
 
 	@Override
 	public void addFormatters(FormatterRegistry registry) {
+		UserToCopyWriterConverter copyWriterConverter = new UserToCopyWriterConverter(encoder);
+
+		registry.addConverter(new DiscussionToDiscussionInfoDto(copyWriterConverter));
+		registry.addConverter(new DiscussionDtoToDiscussionConverter());
 		registry.addConverter(new ClientDtoToClientConverter(encoder));
 		registry.addConverter(new DoctorDtoToDoctorConverter(encoder));
+		registry.addConverter(new MessageDtoToMessageConverter());
+		registry.addConverter(new MessageToMessageDtoConverter());
 		registry.addConverter(new DoctorToDoctorDtoConverter());
 		registry.addConverter(new ClientToClientDtoConverter());
+		registry.addConverter(copyWriterConverter);
 	}
 
 	@Override

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="fragment/header" th:with="activeTab='main'" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/common.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/chats_list.css}">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div th:replace=":: navbar">Navbar</div>
+
+<div layout:fragment="content">
+    <div class="content">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="chat" th:each="discussion : ${discussions}">
+                    <a th:href="@{'/discussion/' + ${discussion.id}}">
+                        <div class="form-inline">
+                            <div class="form-group">
+                                <div class="type_label">
+                                    <p th:text="#{client}">Client</p>
+                                </div>
+                                <img th:if="${discussion.client.encodeAvatar == null}" th:src="@{/img/unknown-person.jpg}" alt="Avatar">
+                                <img th:unless="${discussion.client.encodeAvatar == null}"
+                                     th:src="*{'data:image/png;base64,'+ discussion.client.encodeAvatar}"
+                                     alt="Avatar">
+                                <div class="user">
+                                    <p th:text="${discussion.client.fullName}">User</p>
+                                </div>
+                            </div>
+                            <div class="form-group pull-right">
+                                <div class="type_label">
+                                    <p th:text="#{doctor}">Doctor</p>
+                                </div>
+                                <img th:if="${discussion.doctor.encodeAvatar == null}" th:src="@{/img/unknown-person.jpg}" alt="Avatar">
+                                <img th:unless="${discussion.doctor.encodeAvatar == null}"
+                                     th:src="*{'data:image/png;base64,'+ discussion.doctor.encodeAvatar}"
+                                     alt="Avatar">
+                                <div class="user">
+                                    <p th:text="${discussion.doctor.fullName}">User</p>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="form-group center-block">
+                            <textarea class="form-control" readonly th:text="${discussion.comment}"></textarea>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

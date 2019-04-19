@@ -1,11 +1,10 @@
 package com.remote.doctor.converter;
 
-import java.util.Base64;
-
 import org.springframework.core.convert.converter.Converter;
 
 import com.remote.doctor.domain.Client;
 import com.remote.doctor.dto.ClientDto;
+import com.remote.doctor.util.ImageUtils;
 
 public class ClientToClientDtoConverter implements Converter<Client, ClientDto> {
 
@@ -22,11 +21,8 @@ public class ClientToClientDtoConverter implements Converter<Client, ClientDto> 
         clientDto.setLastname(source.getLastname());
         clientDto.setPhoneNumber(source.getPhoneNumber());
         clientDto.setUsername(source.getUsername());
-
-        if (source.getAvatar() != null) {
-            String encodeImage = Base64.getEncoder().encodeToString(source.getAvatar());
-            clientDto.setEncodeAvatar(encodeImage);
-        }
+        clientDto.setAmount(source.getAmount());
+        clientDto.setEncodeAvatar(ImageUtils.encodeImage(source.getAvatar()));
 
         return clientDto;
     }
